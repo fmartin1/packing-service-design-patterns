@@ -13,9 +13,11 @@ import packing.size.impl.box.SmallBox;
 import packing.size.impl.envelope.LargeEnvelope;
 import packing.size.impl.envelope.MediumEnvelope;
 import packing.size.impl.envelope.SmallEnvelope;
+import packing.type.PackageType;
 import packing.type.impl.Box;
 import packing.type.impl.Envelope;
 import packing.type.PackageTypeEnum;
+import packing.type.impl.PackageTypeFactory;
 import shipment.Shipping;
 import shipment.impl.air.ExpressAirShipping;
 import shipment.impl.air.RegularAirShipping;
@@ -71,19 +73,13 @@ class Package {
     private void printPackageInformation(PackageTypeEnum packageTypeEnum, PackageSizeEnum packageSizeEnum) {
         singleStringPrinter.print("PACKAGE INFORMATION");
         singleStringPrinter.print("--------------");
-        printSizedPackageTypeDescription(packageSizeEnum, packageTypeEnum);
+        printPackageTypeDescription(packageSizeEnum, packageTypeEnum);
         printPackageContent();
     }
 
-    private void printSizedPackageTypeDescription(PackageSizeEnum packageSizeEnum, PackageTypeEnum packageTypeEnum) {
-        if (packageTypeEnum.equals(PackageTypeEnum.BOX)) {
-            Box box = new Box(packageSizeEnum);
-            box.print();
-
-        } else if (packageTypeEnum.equals(PackageTypeEnum.ENVELOPE)) {
-            Envelope envelope = new Envelope(packageSizeEnum);
-            envelope.print();
-        }
+    private void printPackageTypeDescription(PackageSizeEnum packageSizeEnum, PackageTypeEnum packageTypeEnum) {
+        PackageType packageType = PackageTypeFactory.create(packageTypeEnum, packageSizeEnum);
+        packageType.print();
     }
 
     private void printPackageContent() {
