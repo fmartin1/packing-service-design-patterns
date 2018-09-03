@@ -1,30 +1,13 @@
 import javafx.util.Pair;
 import mailing.MailInfo;
 import packing.content.PackageContent;
-import packing.size.PackageSize;
 import packing.size.PackageSizeEnum;
 
-import packing.size.box.BoxSize;
-import packing.size.envelope.EnvelopeSize;
-import packing.size.impl.box.BoxSizeFactory;
-import packing.size.impl.box.LargeBox;
-import packing.size.impl.box.MediumBox;
-import packing.size.impl.box.SmallBox;
-import packing.size.impl.envelope.LargeEnvelope;
-import packing.size.impl.envelope.MediumEnvelope;
-import packing.size.impl.envelope.SmallEnvelope;
 import packing.type.PackageType;
-import packing.type.impl.Box;
-import packing.type.impl.Envelope;
 import packing.type.PackageTypeEnum;
 import packing.type.impl.PackageTypeFactory;
 import shipment.Shipping;
-import shipment.impl.air.ExpressAirShipping;
-import shipment.impl.air.RegularAirShipping;
-import shipment.impl.air.SlowAirShipping;
-import shipment.impl.land.ExpressLandShipping;
-import shipment.impl.land.RegularLandShipping;
-import shipment.impl.land.SlowLandShipping;
+import shipment.ShippingFactory;
 import shipment.ShipmentModeEnum;
 import shipment.DeliveryTimeEnum;
 import util.SingleStringPrinter;
@@ -103,27 +86,7 @@ class Package {
     private void printShippingInformation(ShipmentModeEnum shippingModeEnum, DeliveryTimeEnum deliveryTimeEnum) {
         singleStringPrinter.print("SHIPPING INFORMATION");
         singleStringPrinter.print("--------------");
-
-        Shipping shipping = null;
-
-        if (shippingModeEnum.equals(ShipmentModeEnum.LAND)) {
-            if (deliveryTimeEnum.equals(DeliveryTimeEnum.EXPRESS)) {
-                shipping = new ExpressLandShipping();
-            } else if (deliveryTimeEnum.equals(DeliveryTimeEnum.REGULAR)) {
-                shipping = new RegularLandShipping();
-            } else if (deliveryTimeEnum.equals(DeliveryTimeEnum.SLOW)) {
-                shipping = new SlowLandShipping();
-            }
-        } else if (shippingModeEnum.equals(ShipmentModeEnum.AIR)) {
-            if (deliveryTimeEnum.equals(DeliveryTimeEnum.EXPRESS)) {
-                shipping = new ExpressAirShipping();
-            } else if (deliveryTimeEnum.equals(DeliveryTimeEnum.REGULAR)) {
-                shipping = new RegularAirShipping();
-            } else if (deliveryTimeEnum.equals(DeliveryTimeEnum.SLOW)) {
-                shipping = new SlowAirShipping();
-            }
-        }
-
+        Shipping shipping = ShippingFactory.create(shippingModeEnum, deliveryTimeEnum);
         printShippingInformation(shipping);
     }
 
