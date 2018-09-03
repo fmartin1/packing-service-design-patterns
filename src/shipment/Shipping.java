@@ -10,6 +10,17 @@ public interface Shipping {
 
     String getDeliveryTime();
 
+    default void print() {
+        printDescription();
+        printFolio();
+        printStages();
+    }
+
+    default void printDescription() {
+        singleStringPrinter.print("- Mode: " + getMode());
+        singleStringPrinter.print("- Delivery time: " + getDeliveryTime());
+    }
+
     default void printFolio() {
         singleStringPrinter.print("- Folio number: " + getFolioPrefix() + new Random().nextInt(1000000));
         singleStringPrinter.print("\n");

@@ -87,14 +87,7 @@ class Package {
         singleStringPrinter.print("SHIPPING INFORMATION");
         singleStringPrinter.print("--------------");
         Shipping shipping = ShippingFactory.create(shippingModeEnum, deliveryTimeEnum);
-        printShippingInformation(shipping);
-    }
-
-    private void printShippingInformation(Shipping shipping) {
-        singleStringPrinter.print("- Mode: " + shipping.getMode());
-        singleStringPrinter.print("- Delivery time: " + shipping.getDeliveryTime());
-        shipping.printFolio();
-        shipping.printStages();
+        shipping.print();
     }
 
     interface MapPrinter {
