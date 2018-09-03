@@ -1,12 +1,13 @@
 package packing.type.impl;
 
-import packing.size.box.BoxSize;
+import packing.size.PackageSizeEnum;
+import packing.size.impl.box.BoxSizeFactory;
 import packing.type.PackageType;
 
 public class Box extends PackageType {
 
-    public Box(BoxSize boxSize) {
-        super(boxSize);
+    public Box(PackageSizeEnum sizeEnum) {
+        setPackageSize(new BoxSizeFactory().create(sizeEnum));
     }
 
     @Override

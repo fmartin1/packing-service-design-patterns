@@ -1,10 +1,12 @@
 import javafx.util.Pair;
 import mailing.MailInfo;
 import packing.content.PackageContent;
+import packing.size.PackageSize;
 import packing.size.PackageSizeEnum;
 
 import packing.size.box.BoxSize;
 import packing.size.envelope.EnvelopeSize;
+import packing.size.impl.box.BoxSizeFactory;
 import packing.size.impl.box.LargeBox;
 import packing.size.impl.box.MediumBox;
 import packing.size.impl.box.SmallBox;
@@ -75,31 +77,11 @@ class Package {
 
     private void printSizedPackageTypeDescription(PackageSizeEnum packageSizeEnum, PackageTypeEnum packageTypeEnum) {
         if (packageTypeEnum.equals(PackageTypeEnum.BOX)) {
-            BoxSize boxSize = null;
-
-            if (packageSizeEnum.equals(PackageSizeEnum.SMALL)) {
-                boxSize = new SmallBox();
-            } else if (packageSizeEnum.equals(PackageSizeEnum.MEDIUM)) {
-                boxSize = new MediumBox();
-            } else if (packageSizeEnum.equals(PackageSizeEnum.LARGE)) {
-                boxSize = new LargeBox();
-            }
-
-            Box box = new Box(boxSize);
+            Box box = new Box(packageSizeEnum);
             box.print();
 
         } else if (packageTypeEnum.equals(PackageTypeEnum.ENVELOPE)) {
-            EnvelopeSize envelopeSize = null;
-
-            if (packageSizeEnum.equals(PackageSizeEnum.SMALL)) {
-                envelopeSize = new SmallEnvelope();
-            } else if (packageSizeEnum.equals(PackageSizeEnum.MEDIUM)) {
-                envelopeSize = new MediumEnvelope();
-            } else if (packageSizeEnum.equals(PackageSizeEnum.LARGE)) {
-                envelopeSize = new LargeEnvelope();
-            }
-
-            Envelope envelope = new Envelope(envelopeSize);
+            Envelope envelope = new Envelope(packageSizeEnum);
             envelope.print();
         }
     }

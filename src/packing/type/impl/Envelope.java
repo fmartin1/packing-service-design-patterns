@@ -1,12 +1,13 @@
 package packing.type.impl;
 
-import packing.size.envelope.EnvelopeSize;
+import packing.size.PackageSizeEnum;
+import packing.size.impl.envelope.EnvelopeSizeFactory;
 import packing.type.PackageType;
 
 public class Envelope extends PackageType {
 
-    public Envelope(EnvelopeSize envelopeSize) {
-        super(envelopeSize);
+    public Envelope(PackageSizeEnum sizeEnum) {
+        setPackageSize(new EnvelopeSizeFactory().create(sizeEnum));
     }
 
     @Override

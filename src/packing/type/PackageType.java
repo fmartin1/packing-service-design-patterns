@@ -7,10 +7,6 @@ public abstract class PackageType {
 
     private PackageSize packageSize;
 
-    protected PackageType(PackageSize packageSize) {
-        this.packageSize = packageSize;
-    }
-
     public abstract String getName();
 
     public abstract String getDescription();
