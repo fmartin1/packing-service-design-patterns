@@ -7,6 +7,18 @@ import packing.size.envelope.EnvelopeSize;
 
 public class EnvelopeSizeFactory implements PackageSizeFactory {
 
+    private static EnvelopeSizeFactory uniqueInstance = null;
+
+    private EnvelopeSizeFactory() {
+    }
+
+    public static EnvelopeSizeFactory getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new EnvelopeSizeFactory();
+        }
+        return uniqueInstance;
+    }
+
     @Override
     public PackageSize create(PackageSizeEnum sizeEnum) {
         EnvelopeSize envelopeSize = null;

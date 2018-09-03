@@ -9,9 +9,9 @@ public class ShippingFactory {
         ShippingModeFactory shippingModeFactory = null;
 
         if (shipmentModeEnum.equals(ShipmentModeEnum.LAND)) {
-            shippingModeFactory = new LandShippingFactory();
+            shippingModeFactory = LandShippingFactory.getInstance();
         } else if (shipmentModeEnum.equals(ShipmentModeEnum.AIR)) {
-            shippingModeFactory = new AirShippingFactory();
+            shippingModeFactory = AirShippingFactory.getInstance();
         }
 
         return shippingModeFactory.create(deliveryTimeEnum);

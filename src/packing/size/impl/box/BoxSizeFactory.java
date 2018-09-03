@@ -7,6 +7,18 @@ import packing.size.box.BoxSize;
 
 public class BoxSizeFactory implements PackageSizeFactory {
 
+    private static BoxSizeFactory uniqueInstance = null;
+
+    private BoxSizeFactory() {
+    }
+
+    public static BoxSizeFactory getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new BoxSizeFactory();
+        }
+        return uniqueInstance;
+    }
+
     @Override
     public PackageSize create(PackageSizeEnum sizeEnum) {
         BoxSize boxSize = null;

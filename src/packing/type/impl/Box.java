@@ -6,8 +6,8 @@ import packing.type.PackageType;
 
 public class Box extends PackageType {
 
-    public Box(PackageSizeEnum sizeEnum) {
-        setPackageSize(new BoxSizeFactory().create(sizeEnum));
+    Box(PackageSizeEnum sizeEnum) {
+        setPackageSize(BoxSizeFactory.getInstance().create(sizeEnum));
     }
 
     @Override

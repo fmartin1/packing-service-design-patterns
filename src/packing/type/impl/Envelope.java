@@ -6,8 +6,8 @@ import packing.type.PackageType;
 
 public class Envelope extends PackageType {
 
-    public Envelope(PackageSizeEnum sizeEnum) {
-        setPackageSize(new EnvelopeSizeFactory().create(sizeEnum));
+    Envelope(PackageSizeEnum sizeEnum) {
+        setPackageSize(EnvelopeSizeFactory.getInstance().create(sizeEnum));
     }
 
     @Override

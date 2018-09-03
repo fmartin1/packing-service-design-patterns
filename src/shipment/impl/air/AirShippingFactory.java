@@ -6,6 +6,18 @@ import shipment.ShippingModeFactory;
 
 public class AirShippingFactory implements ShippingModeFactory {
 
+    private static AirShippingFactory uniqueInstance = null;
+
+    private AirShippingFactory() {
+    }
+
+    public static AirShippingFactory getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new AirShippingFactory();
+        }
+        return uniqueInstance;
+    }
+
     @Override
     public Shipping create(DeliveryTimeEnum deliveryTimeEnum) {
         Shipping shipping = null;
