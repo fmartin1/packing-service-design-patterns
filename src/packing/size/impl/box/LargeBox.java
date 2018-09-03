@@ -1,12 +1,12 @@
 package packing.size.impl.box;
 
-import packing.size.box.SizedBox;
+import packing.size.box.BoxSize;
 
-public class MediumBox extends SizedBox {
+public class LargeBox extends BoxSize {
 
     @Override
-    public String getSize() {
-        return "Medium";
+    public String getDescription() {
+        return "Large";
     }
 
     @Override
@@ -21,6 +21,6 @@ public class MediumBox extends SizedBox {
 
     @Override
     public String getHeight() {
-        return "100cm";
+        return "300cm";
     }
 }

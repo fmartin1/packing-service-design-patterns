@@ -1,6 +1,5 @@
 package shipment;
 
-import util.NumberedStringPrinter;
 import util.SingleStringPrinter;
 
 import java.util.Random;

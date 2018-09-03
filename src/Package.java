@@ -3,13 +3,16 @@ import mailing.MailInfo;
 import packing.content.PackageContent;
 import packing.size.PackageSizeEnum;
 
-import packing.size.SizedPackageType;
+import packing.size.box.BoxSize;
+import packing.size.envelope.EnvelopeSize;
 import packing.size.impl.box.LargeBox;
 import packing.size.impl.box.MediumBox;
 import packing.size.impl.box.SmallBox;
 import packing.size.impl.envelope.LargeEnvelope;
 import packing.size.impl.envelope.MediumEnvelope;
 import packing.size.impl.envelope.SmallEnvelope;
+import packing.type.impl.Box;
+import packing.type.impl.Envelope;
 import packing.type.PackageTypeEnum;
 import shipment.Shipping;
 import shipment.impl.air.ExpressAirShipping;
@@ -71,30 +74,34 @@ class Package {
     }
 
     private void printSizedPackageTypeDescription(PackageSizeEnum packageSizeEnum, PackageTypeEnum packageTypeEnum) {
-        SizedPackageType sizedPackageType = null;
         if (packageTypeEnum.equals(PackageTypeEnum.BOX)) {
-            if (packageSizeEnum.equals(PackageSizeEnum.SMALL)) {
-                sizedPackageType = new SmallBox();
-            } else if (packageSizeEnum.equals(PackageSizeEnum.MEDIUM)) {
-                sizedPackageType = new MediumBox();
-            } else if (packageSizeEnum.equals(PackageSizeEnum.LARGE)) {
-                sizedPackageType = new LargeBox();
-            }
-        } else if (packageTypeEnum.equals(PackageTypeEnum.ENVELOPE)) {
-            if (packageSizeEnum.equals(PackageSizeEnum.SMALL)) {
-                sizedPackageType = new SmallEnvelope();
-            } else if (packageSizeEnum.equals(PackageSizeEnum.MEDIUM)) {
-                sizedPackageType = new MediumEnvelope();
-            } else if (packageSizeEnum.equals(PackageSizeEnum.LARGE)) {
-                sizedPackageType = new LargeEnvelope();
-            }
-        }
-        printSizedPackageTypeDescription(sizedPackageType);
-    }
+            BoxSize boxSize = null;
 
-    private void printSizedPackageTypeDescription(SizedPackageType sizedPackageType) {
-        singleStringPrinter.print("Type: " + sizedPackageType.getName() + " (" + sizedPackageType.getDescription() + ")");
-        singleStringPrinter.print("Size: " + sizedPackageType.getSize() + " (" + sizedPackageType.getMeasurements() + ")");
+            if (packageSizeEnum.equals(PackageSizeEnum.SMALL)) {
+                boxSize = new SmallBox();
+            } else if (packageSizeEnum.equals(PackageSizeEnum.MEDIUM)) {
+                boxSize = new MediumBox();
+            } else if (packageSizeEnum.equals(PackageSizeEnum.LARGE)) {
+                boxSize = new LargeBox();
+            }
+
+            Box box = new Box(boxSize);
+            box.print();
+
+        } else if (packageTypeEnum.equals(PackageTypeEnum.ENVELOPE)) {
+            EnvelopeSize envelopeSize = null;
+
+            if (packageSizeEnum.equals(PackageSizeEnum.SMALL)) {
+                envelopeSize = new SmallEnvelope();
+            } else if (packageSizeEnum.equals(PackageSizeEnum.MEDIUM)) {
+                envelopeSize = new MediumEnvelope();
+            } else if (packageSizeEnum.equals(PackageSizeEnum.LARGE)) {
+                envelopeSize = new LargeEnvelope();
+            }
+
+            Envelope envelope = new Envelope(envelopeSize);
+            envelope.print();
+        }
     }
 
     private void printPackageContent() {

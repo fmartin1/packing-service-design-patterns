@@ -1,11 +1,11 @@
 package packing.size.impl.box;
 
-import packing.size.box.SizedBox;
+import packing.size.box.BoxSize;
 
-public class SmallBox extends SizedBox {
+public class SmallBox extends BoxSize {
 
     @Override
-    public String getSize() {
+    public String getDescription() {
         return "Small";
     }
 
