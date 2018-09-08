@@ -1,11 +1,12 @@
 package ns.javaschool.designpatterns.shipment;
 
+import ns.javaschool.designpatterns.decorator.Priceable;
 import ns.javaschool.designpatterns.packing.type.Package;
 import ns.javaschool.designpatterns.util.SingleStringPrinter;
 
 import java.util.Random;
 
-public abstract class Shipping {
+public abstract class Shipping implements Priceable {
 
     public Shipping(Package packageToDeliver) {
         this.packageToDeliver = packageToDeliver;
@@ -28,13 +29,14 @@ public abstract class Shipping {
         printStages();
     }
 
+
     void printDescription() {
         singleStringPrinter.print("- Mode: " + getMode());
         singleStringPrinter.print("- Delivery time: " + getDeliveryTime());
     }
 
     private void printTotalPrice() {
-        singleStringPrinter.print("- Total shipping price: " + "getPrice()");
+        singleStringPrinter.print("- Total shipping price: $" + getPrice() + " dollars");
     }
 
     void printFolio() {

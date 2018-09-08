@@ -18,4 +18,9 @@ public class ExpressLandShipping extends LandShipping {
     public String getDeliveryTime() {
         return "Two to three days";
     }
+
+    @Override
+    public double getPrice() {
+        return 8;
+    }
 }

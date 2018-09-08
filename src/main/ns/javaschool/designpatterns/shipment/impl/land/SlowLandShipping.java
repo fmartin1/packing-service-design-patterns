@@ -18,4 +18,9 @@ public class SlowLandShipping extends LandShipping {
     public String getDeliveryTime() {
         return "Two weeks";
     }
+
+    @Override
+    public double getPrice() {
+        return packageToDeliver.getPrice() + 3;
+    }
 }

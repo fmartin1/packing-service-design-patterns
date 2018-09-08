@@ -18,4 +18,9 @@ public class ExpressAirShipping extends AirShipping {
     public String getDeliveryTime() {
         return "Next day";
     }
+
+    @Override
+    public double getPrice() {
+        return packageToDeliver.getPrice() + 20;
+    }
 }

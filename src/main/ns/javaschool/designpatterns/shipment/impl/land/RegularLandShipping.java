@@ -18,4 +18,9 @@ public class RegularLandShipping extends LandShipping {
     public String getDeliveryTime() {
         return "Four to six days";
     }
+
+    @Override
+    public double getPrice() {
+        return packageToDeliver.getPrice() + 5;
+    }
 }

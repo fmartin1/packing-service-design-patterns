@@ -18,4 +18,9 @@ public class SlowAirShipping extends AirShipping {
     public String getDeliveryTime() {
         return "One week";
     }
+
+    @Override
+    public double getPrice() {
+        return 5;
+    }
 }

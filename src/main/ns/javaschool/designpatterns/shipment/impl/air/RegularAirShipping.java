@@ -18,4 +18,9 @@ public class RegularAirShipping extends AirShipping {
     public String getDeliveryTime() {
         return "Two to three days";
     }
+
+    @Override
+    public double getPrice() {
+        return packageToDeliver.getPrice() + 10;
+    }
 }
