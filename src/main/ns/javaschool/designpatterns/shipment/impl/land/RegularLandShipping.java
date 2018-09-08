@@ -5,8 +5,8 @@ import ns.javaschool.designpatterns.shipment.land.LandShipping;
 
 public class RegularLandShipping extends LandShipping {
 
-    public RegularLandShipping(Package newPackage) {
-        super(newPackage);
+    public RegularLandShipping(Package packageToDeliver) {
+        super(packageToDeliver);
     }
 
     @Override

@@ -40,16 +40,12 @@ class PackageService {
         Package newPackage = PackageFactory.create(packageTypeEnum, packageSizeEnum);
         printPackageInformation(newPackage);
 
-        //TODO: Implement decorator to get the shipping price
+        //TODO: Implement decorator to get the shipping price + package price
         Shipping shipping = ShippingFactory.create(shippingModeEnum, deliveryTimeEnum, newPackage);
         printShippingInformation(shipping);
 
         singleStringPrinter.print("**********************************************");
         singleStringPrinter.print("\n");
-
-        //TODO: Print total price
-        singleStringPrinter.print("TOTAL PACKAGE PRICE + SHIPPING: ");
-        singleStringPrinter.print("????");
 
         return newPackage;
     }

@@ -7,8 +7,8 @@ import java.util.Random;
 
 public abstract class Shipping {
 
-    public Shipping(Package newPackage) {
-        this.packageToDeliver = newPackage;
+    public Shipping(Package packageToDeliver) {
+        this.packageToDeliver = packageToDeliver;
     }
 
     public Package packageToDeliver;
@@ -23,6 +23,7 @@ public abstract class Shipping {
 
     public void print() {
         printDescription();
+        printTotalPrice();
         printFolio();
         printStages();
     }
@@ -30,6 +31,10 @@ public abstract class Shipping {
     void printDescription() {
         singleStringPrinter.print("- Mode: " + getMode());
         singleStringPrinter.print("- Delivery time: " + getDeliveryTime());
+    }
+
+    private void printTotalPrice() {
+        singleStringPrinter.print("- Total shipping price: " + "getPrice()");
     }
 
     void printFolio() {

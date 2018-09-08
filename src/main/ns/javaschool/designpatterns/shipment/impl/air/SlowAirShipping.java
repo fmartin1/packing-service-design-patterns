@@ -5,8 +5,8 @@ import ns.javaschool.designpatterns.shipment.air.AirShipping;
 
 public class SlowAirShipping extends AirShipping {
 
-    public SlowAirShipping(Package newPackage) {
-        super(newPackage);
+    public SlowAirShipping(Package packageToDeliver) {
+        super(packageToDeliver);
     }
 
     @Override
