@@ -69,7 +69,7 @@ class PackageService {
         singleStringPrinter.print("--------------");
         singleStringPrinter.print("Type: " + newPackage.getName() + " (" + newPackage.getDescription() + ")");
         singleStringPrinter.print("Size: " + newPackage.packageSize.getDescription() + " (" + newPackage.packageSize.getDimensions() + ")");
-        singleStringPrinter.print(String.format("Cost: %d dollars", newPackage.getPrice()));
+        singleStringPrinter.print(String.format("Cost: %.2f dollars", newPackage.getPrice()));
         printPackageContent();
     }
 
