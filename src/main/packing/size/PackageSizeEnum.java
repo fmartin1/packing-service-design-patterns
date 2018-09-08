@@ -1,4 +1,4 @@
-package main.packing.size;
+package packing.size;
 
 public enum PackageSizeEnum {
 

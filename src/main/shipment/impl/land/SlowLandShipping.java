@@ -1,8 +1,8 @@
-package main.shipment.impl.land;
+package shipment.impl.land;
 
-import main.shipment.land.LandShipping;
+import shipment.land.LandShipping;
 
-public class SlowLandShipping extends LandShipping {
+public class SlowLandShipping implements LandShipping {
 
     @Override
     public String getMode() {

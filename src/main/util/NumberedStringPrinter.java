@@ -1,6 +1,6 @@
 package util;
 
-public interface SingleStringPrinter {
+public interface NumberedStringPrinter {
 
     void print(String string);
 }

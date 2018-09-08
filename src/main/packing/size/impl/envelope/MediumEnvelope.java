@@ -1,11 +1,11 @@
-package main.packing.size.impl.envelope;
+package packing.size.impl.envelope;
 
-import main.packing.size.envelope.EnvelopeSize;
+import packing.size.envelope.SizedEnvelope;
 
-public class MediumEnvelope extends EnvelopeSize {
+public class MediumEnvelope extends SizedEnvelope {
 
     @Override
-    public String getDescription() {
+    public String getSize() {
         return "Medium";
     }
 

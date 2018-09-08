@@ -1,4 +1,4 @@
-package main.packing.content;
+package packing.content;
 
 public class PackageContent {
 

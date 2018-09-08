@@ -1,49 +1,39 @@
-package main.shipment;
+package shipment;
 
-import main.util.SingleStringPrinter;
+import util.NumberedStringPrinter;
+import util.SingleStringPrinter;
 
 import java.util.Random;
 
-public abstract class Shipping {
+public interface Shipping {
 
-    public abstract String getMode();
+    String getMode();
 
-    public abstract String getDeliveryTime();
+    String getDeliveryTime();
 
-    public final void print() {
-        printDescription();
-        printFolio();
-        printStages();
-    }
-
-    private void printDescription() {
-        singleStringPrinter.print("- Mode: " + getMode());
-        singleStringPrinter.print("- Delivery time: " + getDeliveryTime());
-    }
-
-    private void printFolio() {
+    default void printFolio() {
         singleStringPrinter.print("- Folio number: " + getFolioPrefix() + new Random().nextInt(1000000));
         singleStringPrinter.print("\n");
     }
 
-    public abstract String getFolioPrefix();
+    String getFolioPrefix();
 
-    private void printStages() {
+    default void printStages() {
         printInitialStages();
         printOtherStages();
         printFinalStages();
     }
 
-    private void printInitialStages() {
+    default void printInitialStages() {
         singleStringPrinter.print("- Receiving package at the origin office");
         singleStringPrinter.print("- Labeling package for shipping");
     }
 
-    public abstract void printOtherStages();
+    void printOtherStages();
 
-    private void printFinalStages() {
+    default void printFinalStages() {
         singleStringPrinter.print("- Receiving package at destination office");
     }
 
-    protected SingleStringPrinter singleStringPrinter = System.out::println;
+    SingleStringPrinter singleStringPrinter = System.out::println;
 }

@@ -1,16 +1,16 @@
-package main.shipment.air;
+package shipment.air;
 
-import main.shipment.Shipping;
+import shipment.Shipping;
 
-public abstract class AirShipping extends Shipping {
+public interface AirShipping extends Shipping {
 
     @Override
-    public String getFolioPrefix() {
+    default String getFolioPrefix() {
         return "A-";
     }
 
     @Override
-    public void printOtherStages() {
+    default void printOtherStages() {
         singleStringPrinter.print("- Putting package in a plane");
         singleStringPrinter.print("- Flying to destination");
         singleStringPrinter.print("- Delivering to the destination office");

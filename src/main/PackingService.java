@@ -1,11 +1,9 @@
-package main;
-
-import main.mailing.MailInfo;
-import main.packing.content.PackageContent;
-import main.packing.size.PackageSizeEnum;
-import main.packing.type.PackageTypeEnum;
-import main.shipment.ShipmentModeEnum;
-import main.shipment.DeliveryTimeEnum;
+import mailing.MailInfo;
+import packing.content.PackageContent;
+import packing.size.PackageSizeEnum;
+import packing.type.PackageTypeEnum;
+import shipment.ShipmentModeEnum;
+import shipment.DeliveryTimeEnum;
 
 public class PackingService {
 
@@ -23,9 +21,7 @@ public class PackingService {
 
         PackageContent packageContent = new PackageContent("Glass trophy to the java dev of the year", true, false, false);
         Package pack = new Package(mailInfo, packageContent);
-        pack.setPackageType(PackageTypeEnum.BOX, PackageSizeEnum.SMALL);
-        pack.setShippingMode(ShipmentModeEnum.LAND, DeliveryTimeEnum.REGULAR);
-        pack.shipAndPrintTicket();
+        pack.shipAndPrintTicket(PackageTypeEnum.BOX, PackageSizeEnum.SMALL, ShipmentModeEnum.LAND, DeliveryTimeEnum.REGULAR);
     }
 
     private static void sendPackageTwo() {
@@ -35,9 +31,7 @@ public class PackingService {
 
         PackageContent packageContent = new PackageContent("12-bottle box of rum", true, true, false);
         Package pack = new Package(mailInfo, packageContent);
-        pack.setPackageType(PackageTypeEnum.BOX, PackageSizeEnum.MEDIUM);
-        pack.setShippingMode(ShipmentModeEnum.AIR, DeliveryTimeEnum.REGULAR);
-        pack.shipAndPrintTicket();
+        pack.shipAndPrintTicket(PackageTypeEnum.BOX, PackageSizeEnum.MEDIUM, ShipmentModeEnum.AIR, DeliveryTimeEnum.REGULAR);
     }
 
     private static void sendPackageThree() {
@@ -47,9 +41,7 @@ public class PackingService {
 
         PackageContent packageContent = new PackageContent("Javaschool member card", false, false, false);
         Package pack = new Package(mailInfo, packageContent);
-        pack.setPackageType(PackageTypeEnum.ENVELOPE, PackageSizeEnum.SMALL);
-        pack.setShippingMode(ShipmentModeEnum.LAND, DeliveryTimeEnum.EXPRESS);
-        pack.shipAndPrintTicket();
+        pack.shipAndPrintTicket(PackageTypeEnum.ENVELOPE, PackageSizeEnum.SMALL, ShipmentModeEnum.LAND, DeliveryTimeEnum.EXPRESS);
     }
 
     private static void sendPackageFour() {
@@ -59,8 +51,6 @@ public class PackingService {
 
         PackageContent packageContent = new PackageContent("Anthrax", false, false, true);
         Package pack = new Package(mailInfo, packageContent);
-        pack.setPackageType(PackageTypeEnum.ENVELOPE, PackageSizeEnum.MEDIUM);
-        pack.setShippingMode(ShipmentModeEnum.AIR, DeliveryTimeEnum.EXPRESS);
-        pack.shipAndPrintTicket();
+        pack.shipAndPrintTicket(PackageTypeEnum.ENVELOPE, PackageSizeEnum.MEDIUM, ShipmentModeEnum.AIR, DeliveryTimeEnum.EXPRESS);
     }
 }

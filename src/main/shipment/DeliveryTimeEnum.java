@@ -1,4 +1,4 @@
-package main.shipment;
+package shipment;
 
 public enum DeliveryTimeEnum {
 

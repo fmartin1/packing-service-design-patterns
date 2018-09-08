@@ -1,4 +1,4 @@
-package main.packing.type;
+package packing.type;
 
 public enum PackageTypeEnum {
 

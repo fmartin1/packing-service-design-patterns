@@ -1,8 +1,8 @@
-package main.shipment.impl.air;
+package shipment.impl.air;
 
-import main.shipment.air.AirShipping;
+import shipment.air.AirShipping;
 
-public class RegularAirShipping extends AirShipping {
+public class RegularAirShipping implements AirShipping {
 
     @Override
     public String getMode() {
