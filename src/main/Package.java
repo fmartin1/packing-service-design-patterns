@@ -1,4 +1,5 @@
-package main;import javafx.util.Pair;
+package main;
+
 import main.mailing.MailInfo;
 import main.packing.content.PackageContent;
 import main.packing.size.PackageSizeEnum;
@@ -12,9 +13,6 @@ import main.shipment.ShipmentModeEnum;
 import main.shipment.DeliveryTimeEnum;
 import main.util.SingleStringPrinter;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 class Package {
 
     private MailInfo mailInfo;
@@ -22,7 +20,6 @@ class Package {
     private PackageType packageType;
     private Shipping shipping;
 
-    private MapPrinter mapPrinter = new MapPrinterImpl();
     private SingleStringPrinter singleStringPrinter = System.out::println;
 
     Package(MailInfo mailInfo, PackageContent packageContent) {
@@ -39,9 +36,7 @@ class Package {
     }
 
     void shipAndPrintTicket() {
-        mapPrinter.print(getMailingInformation());
-        singleStringPrinter.print("\n");
-
+        printMailingInformation();
         printPackageInformation();
         printShippingInformation();
 
@@ -49,14 +44,14 @@ class Package {
         singleStringPrinter.print("\n");
     }
 
-    private Pair<String, Map<String, String>> getMailingInformation() {
-        Map<String, String> mailInfoMap = new LinkedHashMap<>();
-        Pair<String, Map<String, String>> section = new Pair<>("MAIL INFORMATION", mailInfoMap);
-        mailInfoMap.put("Sender's name", mailInfo.getSenderName());
-        mailInfoMap.put("Sender's address", mailInfo.getSenderAddress());
-        mailInfoMap.put("Receiver's name", mailInfo.getReceiverName());
-        mailInfoMap.put("Receiver's address", mailInfo.getReceiverAddress());
-        return section;
+    private void printMailingInformation() {
+        singleStringPrinter.print("MAIL INFORMATION");
+        singleStringPrinter.print("--------------");
+        singleStringPrinter.print("- Sender's name" + mailInfo.getSenderName());
+        singleStringPrinter.print("- Sender's address" + mailInfo.getSenderAddress());
+        singleStringPrinter.print("- Receiver's name" + mailInfo.getReceiverName());
+        singleStringPrinter.print("- Receiver's address" + mailInfo.getReceiverAddress());
+        singleStringPrinter.print("\n");
     }
 
     private void printPackageInformation() {
@@ -64,6 +59,7 @@ class Package {
         singleStringPrinter.print("--------------");
         printPackageTypeDescription();
         printPackageContent();
+        singleStringPrinter.print("\n");
     }
 
     private void printPackageTypeDescription() {
@@ -71,42 +67,24 @@ class Package {
     }
 
     private void printPackageContent() {
-        singleStringPrinter.print("Content: " + packageContent.getDescription());
+        singleStringPrinter.print("- Content: " + packageContent.getDescription());
 
         if (packageContent.isFragile()) {
-            singleStringPrinter.print("(F) Fragile");
+            singleStringPrinter.print(" - (F) Fragile");
         }
 
         if (packageContent.isLiquid()) {
-            singleStringPrinter.print("(L) Liquid");
+            singleStringPrinter.print(" - (L) Liquid");
         }
 
         if (packageContent.isDangerous()) {
-            singleStringPrinter.print("(D) Dangerous");
+            singleStringPrinter.print(" - (D) Dangerous");
         }
-
-        singleStringPrinter.print("\n");
     }
 
     private void printShippingInformation() {
         singleStringPrinter.print("SHIPPING INFORMATION");
         singleStringPrinter.print("--------------");
         shipping.print();
-    }
-
-    interface MapPrinter {
-        void print(Pair<String, Map<String, String>> information);
-    }
-
-    class MapPrinterImpl implements MapPrinter {
-        public void print(Pair<String, Map<String, String>> information) {
-            singleStringPrinter.print(information.getKey());
-            singleStringPrinter.print("--------------");
-            for (Map.Entry<String, String> e : information.getValue().entrySet()) {
-                String key = e.getKey();
-                String value = e.getValue();
-                singleStringPrinter.print("- " + key + ": " + value);
-            }
-        }
     }
 }

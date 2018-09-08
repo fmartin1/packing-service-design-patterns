@@ -21,11 +21,11 @@ public abstract class PackageType {
     }
 
     private void printType() {
-        printer.print("Type: " + getName() + " (" + getDescription() + ")");
+        printer.print("- Type: " + getName() + " (" + getDescription() + ")");
     }
 
     private void printSize() {
-        printer.print("Size: " + packageSize.getDescription() + " (" + packageSize.getDimensions() + ")");
+        printer.print("- Size: " + packageSize.getDescription() + " (" + packageSize.getDimensions() + ")");
     }
 
     private SingleStringPrinter printer = System.out::println;
